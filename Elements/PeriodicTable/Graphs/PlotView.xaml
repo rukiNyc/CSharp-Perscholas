@@ -1,0 +1,101 @@
+﻿<UserControl x:Class="PeriodicTable.Graphs.PlotView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+						 xmlns:ptable="clr-namespace:PeriodicTable"
+             xmlns:local="clr-namespace:PeriodicTable.Graphs"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+	<UserControl.Resources>
+		<ItemsPanelTemplate x:Key="iptCanvas">
+			<Canvas />
+		</ItemsPanelTemplate>
+		<local:CanvasExtentConverter x:Key="cec"/>
+		<Style TargetType="Line">
+			<Setter Property="Stroke" Value="Navy"/>
+		</Style>
+	</UserControl.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="10"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="70"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="100"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="30"/>
+		</Grid.ColumnDefinitions>
+		<ItemsControl Name="dataPlot" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Points}" HorizontalAlignment="Stretch"
+									VerticalAlignment="Stretch" ItemsPanel="{StaticResource iptCanvas}">
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<Ellipse Width="8" Height="8" Fill="{Binding Fill}" ToolTip="{Binding ToolTip}">
+						<Ellipse.RenderTransform>
+							<TranslateTransform X="-4" Y="4"/>
+						</Ellipse.RenderTransform>
+					</Ellipse>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+			<ItemsControl.ItemContainerStyle>
+				<Style TargetType="ContentPresenter">
+					<Setter Property="Canvas.Left" Value="{Binding X}"/>
+					<Setter Property="Canvas.Bottom" Value="{Binding Y}"/>
+				</Style>
+			</ItemsControl.ItemContainerStyle>
+		</ItemsControl>
+		<ptable:ElementCategoryKeyPane Grid.Row="1" Grid.Column="1" Opacity="0.6" HorizontalAlignment="Right"
+																	 VerticalAlignment="Top" Width="400" Height="Auto">
+			<ptable:ElementCategoryKeyPane.LayoutTransform>
+				<ScaleTransform ScaleX="0.75" ScaleY="0.75"/>
+			</ptable:ElementCategoryKeyPane.LayoutTransform>
+		</ptable:ElementCategoryKeyPane>
+		<Canvas Name="yAxis" Grid.Row="1" Grid.Column="0" Margin="0,0,-20,0" DataContext="{Binding YAxis}">
+			<TextBlock Canvas.Right="90" Canvas.Top="{Binding ElementName=yAxis,Path=ActualHeight,Converter={StaticResource cec},ConverterParameter=2}" Text="{Binding Label}" 
+									 FontWeight="Bold">
+				<TextBlock.LayoutTransform>
+					<RotateTransform Angle="270" />
+				</TextBlock.LayoutTransform>
+			</TextBlock>
+			<Line Canvas.Right="20" Y1="0" Y2="{Binding ElementName=yAxis,Path=ActualHeight}"/>
+			<ItemsControl Canvas.Right="25" Name="yTicks" ItemsSource="{Binding Ticks}" ItemsPanel="{StaticResource iptCanvas}">
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="{Binding Label}" Width="50" Margin="0,-10,0,0" VerticalAlignment="Top"/>
+							<Line X1="0" X2="10" Stroke="Navy"/>
+						</StackPanel>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+				<ItemsControl.ItemContainerStyle>
+					<Style TargetType="ContentPresenter">
+						<Setter Property="Canvas.Top" Value="{Binding Position.Y}"/>
+						<Setter Property="Canvas.Right" Value="-10"/>
+					</Style>
+				</ItemsControl.ItemContainerStyle>
+			</ItemsControl>
+		</Canvas>
+		<Canvas Name="xAxis" Grid.Row="2" Grid.Column="1" Margin="0,-6,0,0" DataContext="{Binding XAxis}">
+			<TextBlock Canvas.Top="40" Canvas.Left="{Binding ElementName=xAxis,Path=ActualWidth,Converter={StaticResource cec},ConverterParameter=2}" 
+								 Text="{Binding Label}" FontWeight="Bold" TextAlignment="Center"/>
+			<Line Canvas.Top="6" X1="0" X2="{Binding ElementName=xAxis,Path=ActualWidth}"/>
+			<ItemsControl Name="xTicks" ItemsSource="{Binding Ticks}" HorizontalAlignment="Stretch" ItemsPanel="{StaticResource iptCanvas}">
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Orientation="Vertical">
+							<Line Y1="0" Y2="12" Stroke="Navy"/>
+							<TextBlock Text="{Binding Label}" HorizontalAlignment="Left" Margin="-8,5,0,0"/>
+						</StackPanel>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+				<ItemsControl.ItemContainerStyle>
+					<Style TargetType="ContentPresenter">
+						<Setter Property="Canvas.Left" Value="{Binding Position.X}"/>
+					</Style>
+				</ItemsControl.ItemContainerStyle>
+			</ItemsControl>
+
+		</Canvas>
+	</Grid>
+</UserControl>

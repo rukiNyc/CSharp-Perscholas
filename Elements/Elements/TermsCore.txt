@@ -1,0 +1,37 @@
+Atomic number	i
+Group, block	grp
+Period	s
+Element category	s
+Standard atomic weight	d
+Electron configuration	s
+Phase	s
+Melting point	t
+Boiling point	t
+Density	du
+Triple point	tp
+Critical point	tp
+Heat of fusion	du
+Heat of vaporization	du
+Molar heat capacity	du
+Oxidation states	ii
+Electronegativity	d
+Ionization energies	ie
+Atomic radius	du
+Covalent radius	du
+Van der Waals radius	du
+Crystal structure	xtal
+Speed of sound	du
+Thermal expansion	du
+Thermal conductivity	du
+Electrical resistivity	du
+Magnetic ordering	s
+Magnetic susceptibility	t
+Young's modulus	du
+Shear modulus	du
+Bulk modulus	du
+Poisson ratio	d
+Mohs hardness	d
+Vickers hardness	du
+Brinell hardness	du
+CAS Number	s
+Discovery	s

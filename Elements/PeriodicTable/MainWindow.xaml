@@ -1,0 +1,19 @@
+﻿<Window x:Class="PeriodicTable.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PeriodicTable"
+        mc:Ignorable="d"
+        Title="Periodic Table of the Elements" Height="700" Width="1050" WindowState="Maximized">
+	<Grid Background="Navy">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<local:PTable HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" />
+	</Grid>
+
+</Window>
