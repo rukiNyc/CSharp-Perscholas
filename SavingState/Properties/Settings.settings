@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SavingState.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MainWindowState" Type="System.Windows.WindowState" Scope="User">
+      <Value Profile="(Default)">Maximized</Value>
+    </Setting>
+    <Setting Name="MainWindowBounds" Type="System.Windows.Rect" Scope="User">
+      <Value Profile="(Default)">0,0,1200,800</Value>
+    </Setting>
+    <Setting Name="MainWindowTab" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SelectedCountry" Type="System.String" Scope="User">
+      <Value Profile="(Default)">US</Value>
+    </Setting>
+    <Setting Name="SelectedStationId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GHCND:USC00361212</Value>
+    </Setting>
+    <Setting Name="SelectedYear" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2017</Value>
+    </Setting>
+    <Setting Name="ApiEx_Endpoint" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Datasets</Value>
+    </Setting>
+    <Setting Name="ApiEx_Parameters" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ApiEx_IncludePaging" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

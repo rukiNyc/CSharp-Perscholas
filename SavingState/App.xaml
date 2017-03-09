@@ -1,0 +1,23 @@
+﻿<Application x:Class="SavingState.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SavingState"
+ 						 xmlns:model="clr-namespace:SavingState.Model"
+						 xmlns:ext="clr-namespace:CommonTools.Lib.Extensions;assembly=CommonTools.Lib"
+             StartupUri="MainWindow.xaml">
+	<Application.Resources>
+		<model:MainWindowModel x:Key="mwm"/>
+		<Style TargetType="TextBox">
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<!--<Setter Property="Height" Value="25"/>-->
+			<Setter Property="Padding" Value="3,0"/>
+			<Setter Property="Margin" Value="3,5"/>
+			<Setter Property="ext:TextBoxEx.SelectAllOnFocus" Value="True"/>
+			<Style.Triggers>
+				<Trigger Property="IsReadOnly" Value="True">
+					<Setter Property="Background" Value="AliceBlue"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+	</Application.Resources>
+</Application>

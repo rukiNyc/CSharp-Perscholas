@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="SavingState.ApiExplorerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SavingState"
+						 xmlns:ext="clr-namespace:CommonTools.Lib.Extensions;assembly=CommonTools.Lib"
+						 mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+	<UserControl.Resources>
+		<Style TargetType="ComboBox">
+			<Setter Property="Height" Value="25"/>
+			<Setter Property="Margin" Value="5"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+		</Style>
+		<Style TargetType="Label">
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="HorizontalAlignment" Value="Right"/>
+			<Setter Property="Margin" Value="0,0,5,0"/>
+		</Style>
+	</UserControl.Resources>
+    <Grid Background="AliceBlue">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<DockPanel Grid.Row="0">
+			<Label Content="_Endpoint:" Target="{Binding ElementName=endpoint}"/>
+			<ComboBox Name="endpoint" ItemsSource="{Binding Endpoints}" SelectedItem="{Binding SelectedEndpoint}"/>
+			<Label Content="_Parameters:" Target="{Binding ElementName=parameters}"/>
+			<TextBox Name="parameters" HorizontalAlignment="Stretch" Text="{Binding Parameters,UpdateSourceTrigger=PropertyChanged}"/>
+		</DockPanel>
+		<DockPanel Grid.Row="1">
+			<Button DockPanel.Dock="Right" Margin="3,8,3,0" Content="Make Request" Padding="5"
+							Command="{Binding RequestCommand}" Height="28"/>
+			<GroupBox DockPanel.Dock="Right" Header="Paging" >
+				<local:PagingControl DataContext="{Binding Paging}" />
+			</GroupBox>
+			<GroupBox Header="Full Url">
+				<DockPanel>
+					<TextBox HorizontalAlignment="Stretch" Text="{Binding Url,Mode=OneWay}" IsReadOnly="True"/>
+				</DockPanel>
+			</GroupBox>
+		</DockPanel>
+		<TextBox Grid.Row="2" Text="{Binding Output,Mode=OneWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsReadOnly="True"
+						 AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Height="Auto"/>
+		<TextBlock Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20,0,100,0"
+							 DataContext="{Binding Status}" Text="{Binding Message}" Foreground="{Binding ForeColor}"/>
+	</Grid>
+</UserControl>

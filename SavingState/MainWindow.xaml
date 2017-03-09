@@ -1,0 +1,24 @@
+﻿<Window x:Class="SavingState.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SavingState"
+				xmlns:model="clr-namespace:SavingState.Model"
+        mc:Ignorable="d"
+        Title="Historical NOAH Weather Data" Height="350" Width="525"
+				DataContext="{StaticResource mwm}"
+				WindowState="{Binding WindowState}"
+				>
+	<TabControl SelectedIndex="{Binding CurrentTab}">
+		<TabItem Header="Api Explorer">
+			<local:ApiExplorerView DataContext="{Binding ApiExplorerModel}" />
+		</TabItem>
+		<TabItem Header="Station View">
+			<local:StationView DataContext="{Binding DataModel}" />
+		</TabItem>
+		<TabItem Header="Utilities">
+			<local:UtilityView DataContext="{Binding UtilityModel}"/>
+		</TabItem>
+	</TabControl>
+</Window>
